@@ -1,5 +1,9 @@
 import pygame
 
+#define fps
+clock = pygame.time.Clock()
+fps = 60
+
 screen_width = 600
 screen_height = 800
 
@@ -8,7 +12,7 @@ pygame.display.set_caption('Fruit Invaders')
 
 
 #load in image
-bg = pygame.image.load("img/bg.png")
+bg = pygame.image.load("Projekt/fruitinvaders/fruitinvaders/img/bg.png")
 
 def draw_bg():
     screen.blit(bg, (0,0))
@@ -16,7 +20,8 @@ def draw_bg():
 run = True
 while run:
 
-
+    clock.tick(fps)
+    
 
     #draw background
     draw_bg()
