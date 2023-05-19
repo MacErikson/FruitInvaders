@@ -8,7 +8,7 @@ pygame.display.set_caption('Fruit Invaders')
 
 
 #load in image
-bg = pygame.image.load("Projekt/FruitInvaders/img/bg.png")
+bg = pygame.image.load("img/bg.png")
 
 def draw_bg():
     screen.blit(bg, (0,0))
