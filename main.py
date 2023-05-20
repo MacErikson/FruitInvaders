@@ -24,6 +24,16 @@ class spaceship(pygame.sprite.Sprite):
         self.image = pygame.image.load("Projekt/fruitinvaders/fruitinvaders/img/spaceship.png")
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
+    
+    def update(self):
+        speed = 8
+
+        key = pygame.key.get_pressed()
+        if key[pygame.K_LEFT]:
+            self.rect.x -= speed
+        if key[pygame.K_RIGHT]:
+            self.rect.x += speed
+
 
 #Groups
 spaceship_group = pygame.sprite.Group()
@@ -38,7 +48,7 @@ while run:
     clock.tick(fps)
     
 
-    #draw background
+    #draw backgroundw
     draw_bg()
 
 
@@ -47,6 +57,9 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
+
+
+    spaceship.update()
 
     pygame.display.update()
 
