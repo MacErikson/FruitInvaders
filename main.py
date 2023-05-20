@@ -17,6 +17,21 @@ bg = pygame.image.load("Projekt/fruitinvaders/fruitinvaders/img/bg.png")
 def draw_bg():
     screen.blit(bg, (0,0))
 
+#Klassen
+class spaceship(pygame.sprite.Sprite):
+    def __init__(self, x, y):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load("Projekt/fruitinvaders/fruitinvaders/img/spaceship.png")
+        self.rect = self.image.get_rect()
+        self.rect.center = [x, y]
+
+#Groups
+spaceship_group = pygame.sprite.Group()
+
+#Player
+spaceship = spaceship(int(screen_width / 2), screen_height - 100)
+spaceship_group.add(spaceship)
+
 run = True
 while run:
 
@@ -34,5 +49,8 @@ while run:
             run = False
 
     pygame.display.update()
+
+    #update sprite groups
+    spaceship_group.draw(screen)
 
 pygame.QUIT()
