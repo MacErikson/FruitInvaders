@@ -41,7 +41,7 @@ class spaceship(pygame.sprite.Sprite):
             self.rect.x += speed
         if key[pygame.K_UP] and self.rect.top > 400:
             self.rect.y -= speed
-        if key[pygame.K_DOWN] and self.rect.bottom < screen_height:
+        if key[pygame.K_DOWN] and self.rect.bottom < screen_height -20:
             self.rect.y += speed
         
         #draw healthbar
