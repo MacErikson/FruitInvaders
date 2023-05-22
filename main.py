@@ -12,7 +12,7 @@ pygame.display.set_caption('Fruit Invaders')
 
 
 #load in image
-bg = pygame.image.load("Projekt/fruitinvaders/fruitinvaders/img/bg.png")
+bg = pygame.image.load("img/bg.png")
 
 def draw_bg():
     screen.blit(bg, (0,0))
@@ -21,7 +21,7 @@ def draw_bg():
 class spaceship(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("Projekt/fruitinvaders/fruitinvaders/img/spaceship.png")
+        self.image = pygame.image.load("img/spaceship.png")
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
     
@@ -33,6 +33,10 @@ class spaceship(pygame.sprite.Sprite):
             self.rect.x -= speed
         if key[pygame.K_RIGHT]:
             self.rect.x += speed
+        if key[pygame.K_UP]:
+            self.rect.y -= speed
+        if key[pygame.K_DOWN]:
+            self.rect.y += speed
 
 
 #Groups
@@ -49,7 +53,7 @@ while run:
     
 
     #draw backgroundw
-    draw_bg()
+    #draw_bg()
 
 
 
@@ -62,6 +66,9 @@ while run:
     spaceship.update()
 
     pygame.display.update()
+
+    #draw backgroundw
+    draw_bg()
 
     #update sprite groups
     spaceship_group.draw(screen)
