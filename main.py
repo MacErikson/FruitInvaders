@@ -98,5 +98,6 @@ while run:
 
     #draw sprite groups
     spaceship_group.draw(screen)
+    bullet_group.draw(screen)
 
 pygame.QUIT()
