@@ -43,14 +43,30 @@ class spaceship(pygame.sprite.Sprite):
             self.rect.y -= speed
         if key[pygame.K_DOWN] and self.rect.bottom < screen_height -20:
             self.rect.y += speed
+        #shoot
+        if key[pygame.K_SPACE]:
+            bullet = Bullets(self.rect.centerx, self.rect.top)
+            bullet_group.add(bullet)
         
         #draw healthbar
         pygame.draw.rect(screen, red, (self.rect.x, (self.rect.bottom + 10), self.rect.width, 15))
         if self.health_remaining > 0:
-            pygame.draw.rect(screen, green, (self.rect.x, (self.rect.bottom + 10), int(self.rect.width * (self.health_remaining / self.health_start), 15))
+            pygame.draw.rect(screen, green, (self.rect.x, (self.rect.bottom + 10), int(self.rect.width * (self.health_remaining / self.health_start)), 15))
 
+#Bullet 
+class Bullets(pygame.sprite.Sprite):
+    def __init__(self, x, y):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load("img/bullet.png")
+        self.rect = self.image.get_rect()
+        self.rect.center = [x, y]
+
+    def update(self):
+        self.rect.y -= 5
+        
 #Groups
 spaceship_group = pygame.sprite.Group()
+bullet_group = pygame.sprite.Group()
 
 #Player
 spaceship = spaceship(int(screen_width / 2), screen_height - 100, 3)
@@ -72,9 +88,9 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
-
+#updates
     spaceship.update()
-
+    bullet_group.update()
     pygame.display.update()
 
     #draw backgroundw
